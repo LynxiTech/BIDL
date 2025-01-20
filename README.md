@@ -1,5 +1,5 @@
 <div align=center><img src="./imgs/BIDLlogo.jpg"></div>
-[BIDL User Manual] (https://github.com/LynxiTech/BIDL_doc_en) | [Chinese ReadMe] (./README_zh.md)
+[BIDL User Manual] (https://github.com/LynxiTech/BIDL_doc_en) | [Chinese ReadMe] (./README_zh.md)     
 
 ## <div align="left">What is BIDL?</div>
 BIDL represents a sophisticated development platform tailored for the training of brain-inspired deep learning networks, a collaborative initiative between Lynxi Technology and the Nanhu Research Institute. This platform is architecturally grounded in the PyTorch deep learning framework and is fully compatible with the comprehensive suite of Lynxi's brain-inspired computing platforms.
