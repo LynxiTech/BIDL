@@ -62,23 +62,15 @@ $$
 
 ### 资源包拷贝
 
-模型生成物下载链接：https://pan.baidu.com/s/1I-Txd5VmR4KNQApcXW6wiw?pwd=ej62 提取码: ej62 
+资源包的链接地址为：https://pan.baidu.com/s/1CZm98m290lkdicHoz-TS1g?pwd=sm37 提取码：sm37 
 
-拷贝模型编译生成物文件model_files文件夹到根目录
+模型编译生成物文件位于路径下的model_files文件夹
 
-权重下载链接：https://pan.baidu.com/s/1BZc1ft59HRZ2reJ_Q-3nIA?pwd=agwc 提取码: agwc 
+权重文件位于路径下的weight_files文件夹
 
-拷贝权重文件weight_files文件夹到根目录
+数据集位于路径下的data文件夹
 
-数据集下载链接：https://pan.baidu.com/s/1WXDJgK8kle6zevGFwfynZQ?pwd=d6ky 提取码: d6ky 
-
-拷贝数据集data文件夹到根目录
-
-部署文件下载链接：https://pan.baidu.com/s/1ven1kO9H2xRqjJI9E-34Fw?pwd=wiiv 提取码: wiiv 
-
-拷贝部署deploy文件夹到根目录
-
-使用说明书链接：https://doc.lynxi.com/lynbidl-o/index.html
+部署文件位于路径下的deploy文件夹
 
 ## <div align="left">类脑应用案例说明</div>
 

@@ -58,23 +58,16 @@ Most brain-inspired chips operate in a timestep driven manner, where a timestep 
 - pip install triton
 
 ### Setup dataset packages and compiled models 
-Download link for model compilation artifacts: https://pan.baidu.com/s/1I-Txd5VmR4KNQApcXW6wiw?pwd=ej62 Extraction code: ej62 
+The link address of the resource pack is: https://pan.baidu.com/s/1CZm98m290lkdicHoz-TS1g?pwd=sm37
+Extraction code: sm37
 
-Copy the model compilation artifacts folder named "model_files" to the project's root directory
+The model compilation artifacts files are located in the "model_files" folder under the path.
 
-Download link for weight files：https://pan.baidu.com/s/1BZc1ft59HRZ2reJ_Q-3nIA?pwd=agwc Extraction code: agwc
+The weight files are located in the "weight_files" folder under the path.
 
-Copy the weight files folders named "weight_files" to the project's root directory.
+The dataset is located in the "data" folder under the path.
 
-Download link for datasets：https://pan.baidu.com/s/1WXDJgK8kle6zevGFwfynZQ?pwd=d6ky Extraction code: d6ky 
-
-Copy the datasets folders named "data" to the root directory.
-
-Download link for deploy files： https://pan.baidu.com/s/1ven1kO9H2xRqjJI9E-34Fw?pwd=wiiv Extraction code: wiiv 
-
-Copy the deploy files folders named "deploy" to the root directory.
-
-instruction manual link：https://doc.lynxi.com/lynbidl-e/index.html
+The deployment files are located in the "deploy" folder under the path.
 
 ## <div align="left"> Brain-inspired applications</div>
 BIDL includes a rich set of applications, including spatiotemporal classification models, video detection and tracking, robotics, and functional-level brain-inspired applications.
