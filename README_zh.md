@@ -80,21 +80,10 @@ $$
 
 使用说明书链接：https://doc.lynxi.com/lynbidl-o/index.html
 
-### 编译动态库
-
-在lynadapter路径下执行``./build_run_lif.sh``，即可编译生成动态库
-
 ## <div align="left">类脑应用案例说明</div>
 
 BIDL包括了较为丰富的应用集合，包括空时分类模型、视频检测跟踪、机器人、功能级别类脑等一系列类脑特色应用。
 <div align=center><img src="./imgs/fig4.jpg"></div>
-
-在线学习包含如下类脑片上学习机制：  
-(a) SNN头部BP，用于迁移学习  
-(b) SNN STDP，用于乐曲学习  
-(c) SNN R-STDP，用于抗噪声学习  
-(d) Hebb类脑记忆，用于小样本记忆  
-(e) 非梯度局部学习方法ZO-SGD，用于类脑网络学习    
 
 类脑神经元仿真工具包具有以下功能：
 (a) 支持采用Pytorch语言构建神经元簇，用于仿真一簇或多簇神经元的动力学特性  
@@ -132,4 +121,4 @@ BIDL包括了较为丰富的应用集合，包括空时分类模型、视频检�
 ## <div align="left">参考文献</div>
 相关论文 BIDL: a brain-inspired deep learning framework for spatiotemporal processing (https://www.frontiersin.org/journals/neuroscience/articles/10.3389/fnins.2023.1213720/full)
 
-商业版本LYNBIDL的详细介绍请参考《LYNBIDL用户指南》。
+

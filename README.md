@@ -75,20 +75,10 @@ Download link for deploy files： https://pan.baidu.com/s/1ven1kO9H2xRqjJI9E-34F
 Copy the deploy files folders named "deploy" to the root directory.
 
 instruction manual link：https://doc.lynxi.com/lynbidl-e/index.html
-### Compile dynamic library for Lynxi devices
-
-Execute ``./build_run_lif.sh``  in the "lynadapter" path.
 
 ## <div align="left"> Brain-inspired applications</div>
 BIDL includes a rich set of applications, including spatiotemporal classification models, video detection and tracking, robotics, and functional-level brain-inspired applications.
 <div align=center><img src="./imgs/fig4en.jpg"></div>
-
-Online learning includes the following brain-inspired On-Chip learning mechanisms:  
-(a) SNN with BP, for transfer learning
-(b) SNN with Hebb, for music recognition
-(c) SNN with R-STDP, for noise-resistant learning
-(d) Hebbian memory, for few-shot learning
-(e) Non-gradient local learning method ZO-SGD,for brain-inspired network learning
 
 The brain-inspired neuronal simulation toolkit in the special applications has the following features:  
 (a) Supports building neuron clusters using PyTorch for simulating the dynamics of one or multiple neuron clusters.     
@@ -137,4 +127,3 @@ The brain-inspired neuronal simulation toolkit in the special applications has t
 ## <div align="left">References</div>
 Related paper - BIDL: a brain-inspired deep learning framework for spatiotemporal processing (https://www.frontiersin.org/journals/neuroscience/articles/10.3389/fnins.2023.1213720/full)
 
-Please refer to the "LYNBIDL User Guide" for the detailed introduction of commercial version of LYNBIDL.
