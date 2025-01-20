@@ -1,5 +1,5 @@
 <div align=center><img src="./imgs/BIDLlogo.jpg"></div>
-[BIDL 用户手册] ( https://github.com/LynxiTech/BIDL_doc_zh) | [English ReadMe](./README.md)  
+[BIDL 用户手册] ( https://github.com/LynxiTech/BIDL_doc_zh) | [English ReadMe](README.md)
 
 ## <div align="left">BIDL是什么</div>
 BIDL是由灵汐科技与南湖研究院联合开发的一套用于训练类脑深度学习网络的应用开发平台，其基于深度学习框架Pytorch构建，并实现了对灵汐类脑计算全系列产品的支持。
