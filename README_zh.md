@@ -1,5 +1,5 @@
 ## <div align="left">BIDL是什么</div>
-<div align=center><img src="./imgs/BIDLlogo.jpg" width="2229px" height="216px"></div>
+<div align=center><img src="./imgs/BIDLlogo.jpg"></div>
 
 BIDL是由灵汐科技与南湖研究院联合开发的一套用于训练类脑深度学习网络的应用开发平台，其基于深度学习框架Pytorch构建，并实现了对灵汐类脑计算全系列产品的支持。
   
@@ -87,7 +87,7 @@ $$
 ## <div align="left">类脑应用案例说明</div>
 
 BIDL包括了较为丰富的应用集合，包括空时分类模型、视频检测跟踪、机器人、功能级别类脑等一系列类脑特色应用。
-<div align=center><img src="./imgs/fig4.jpg" width="650px" height="550px"></div>
+<div align=center><img src="./imgs/fig4.jpg"></div>
 
 在线学习包含如下类脑片上学习机制：  
 (a) SNN头部BP，用于迁移学习  
