@@ -1,5 +1,6 @@
 ## <div align="left">What is BIDL?</div>
 <div align=center><img src="./imgs/BIDLlogo.jpg"></div>
+[BIDL User Manual] (https://github.com/LynxiTech/BIDL_doc_en) | [Chinese ReadMe](./README_zh.md)
 BIDL represents a sophisticated development platform tailored for the training of brain-inspired deep learning networks, a collaborative initiative between Lynxi Technology and the Nanhu Research Institute. This platform is architecturally grounded in the PyTorch deep learning framework and is fully compatible with the comprehensive suite of Lynxi's brain-inspired computing platforms.
 
 BIDL supports high-precision Backpropagation Through Time (BPTT) training methodologies for varieties of applications. This capability not only facilitates the training of conventional Spiking Neural Network (SNN) models but also enables the seamless integration of traditional deep learning network layers, thereby facilitating the construction and training of heterogeneous fusion networks. Within the BIDL, users retain the autonomy to define custom neuron implementations, thereby enhancing the platform's adaptability and versatility. 

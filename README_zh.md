@@ -1,6 +1,5 @@
 ## <div align="left">BIDL是什么</div>
-<div align=center><img src="./imgs/BIDLlogo.jpg"></div>
-
+<[BIDL 用户手册] (https://github.com/LynxiTech/BIDL_doc_zh) | [English ReadMe](./README.md)
 BIDL是由灵汐科技与南湖研究院联合开发的一套用于训练类脑深度学习网络的应用开发平台，其基于深度学习框架Pytorch构建，并实现了对灵汐类脑计算全系列产品的支持。
   
 BIDL支持高精度的BPTT训练方法及多种本地学习方法，可用于训练典型的SNN模型，并可与传统的深度学习网络层混合使用，实现异构融合网络构建和训练。其中神经元模型支持LIF和LIFplus，包括一维数据（1D）和帧数据（2D），支持脉冲发放形态和模拟值发放形态，用户也可以自行定义神经元内部实现。
