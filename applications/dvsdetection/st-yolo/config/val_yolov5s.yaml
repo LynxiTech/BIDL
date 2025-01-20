@@ -1,0 +1,18 @@
+defaults:
+  - dataset: gen1
+  - model: yolodet
+  - optional model/dataset: ${model}_${dataset}
+
+path_backbone: /model_files/dvsdetection/styolo/st_yolov5s_backbone
+path_head: /model_files/dvsdetection/styolo/st_yolov5s_head
+chip_id : 0
+use_test_set: True
+hardware:
+  num_workers:
+    eval: 1  # 4
+    train: 6
+batch_size:
+  eval: 1
+  train: 8
+training:
+  precision: 16

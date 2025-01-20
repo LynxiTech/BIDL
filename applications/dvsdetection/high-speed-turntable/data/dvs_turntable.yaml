@@ -1,0 +1,5 @@
+train: ./data/dvs_turntable/train  # 训练集图片的路径
+val: ./data/dvs_turntable/val  # 验证集图片的路径
+
+nc: 3  # 类别数量
+names: ['Cross', 'Triangle', 'Circle']  # 类别名称

@@ -1,0 +1,116 @@
+{
+    "task": "multi_cluster",
+    "version": "0.0.1",
+    "population": [
+        {
+            "neuron_index": [
+                1,
+                4000
+            ],
+            "params": {
+                "V_th": -50.0,
+                "V_reset": -65.0,
+                "V_m": 20.0,
+                "decay": 0.8
+            },
+            "neuron_number": 4000,
+            "neuron_type": "lif",
+            "ex_inh_type": "excitatory"
+        },
+        {
+            "neuron_index": [
+                4001,
+                8000
+            ],
+            "params": {
+                "V_th": -50.0,
+                "V_reset": -65.0,
+                "V_m": 20.0,
+                "decay": 0.8
+            },
+            "neuron_number": 4000,
+            "neuron_type": "lif",
+            "ex_inh_type": "excitatory"
+        },
+        {
+            "neuron_index": [
+                8001,
+                12000
+            ],
+            "params": {
+                "V_th": -50.0,
+                "V_reset": -65.0,
+                "V_m": 20.0,
+                "decay": 0.8
+            },
+            "neuron_number": 4000,
+            "neuron_type": "lif",
+            "ex_inh_type": "inhibition"
+        },
+        {
+            "neuron_index": [
+                12001,
+                16000
+            ],
+            "params": {
+                "V_th": -50.0,
+                "V_reset": -65.0,
+                "V_m": 20.0,
+                "decay": 0.8
+            },
+            "neuron_number": 4000,
+            "neuron_type": "lif",
+            "ex_inh_type": "excitatory"
+        }
+    ],
+    "projection": [
+        {
+            "proj": "0_0",
+            "sparse_ratio": 0.6
+        },
+        {
+            "proj": "0_1",
+            "sparse_ratio": 0.6
+        },
+        {
+            "proj": "0_2",
+            "sparse_ratio": 0.6
+        },
+        {
+            "proj": "0_3",
+            "sparse_ratio": 0.6
+        },
+        {
+            "proj": "1_0",
+            "sparse_ratio": 0.6
+        },
+        {
+            "proj": "1_1",
+            "sparse_ratio": 0.6
+        },
+        {
+            "proj": "1_2",
+            "sparse_ratio": 0.6
+        },
+        {
+            "proj": "1_3",
+            "sparse_ratio": 0.6
+        },
+        {
+            "proj": "2_0",
+            "sparse_ratio": 0.6
+        },
+        {
+            "proj": "2_1",
+            "sparse_ratio": 0.6
+        },
+        {
+            "proj": "2_2",
+            "sparse_ratio": 0.6
+        },
+        {
+            "proj": "2_3",
+            "sparse_ratio": 0.6
+        }
+    ]
+}

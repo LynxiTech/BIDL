@@ -1,0 +1,46 @@
+{
+    "task": "multi_cluster_stdp",
+    "version": "0.0.1",
+    "population": [
+        {
+            "neuron_index": [
+                1,
+                1
+            ],
+            "params": {
+                "V_th": -0.5,
+                "V_reset": -65.0,
+                "V_m": -65.0,
+                "decay": 0.99
+            },
+            "neuron_number": 1,
+            "neuron_type": "lif",
+            "ex_inh_type": "excitatory"
+        },
+        {
+            "neuron_index": [
+                2,
+                101
+            ],
+            "params": {
+                "V_th": -0.5,
+                "V_reset": -65.0,
+                "V_m": -65.0,
+                "decay": 0.99
+            },
+            "neuron_number":100,
+            "neuron_type": "lif",
+            "ex_inh_type": "excitatory"
+        }
+ 
+    ],
+    "projection": [
+        {
+            "proj": "0_1",
+            "sparse_ratio": 1.0,
+            "learning": "True"
+            
+        }
+
+    ]    
+}

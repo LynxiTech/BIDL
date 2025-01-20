@@ -1,0 +1,17 @@
+defaults:
+  - dataset: gen1
+  - model: yolodet
+  - optional model/dataset: ${model}_${dataset}
+
+checkpoint: epoch=001-step=394428-val_AP=0.44.ckpt
+use_test_set: True
+hardware:
+  num_workers:
+    eval: 1  # 4
+    train: 6
+  gpus: 0 # GPU idx (multi-gpu not supported for validation)
+batch_size:
+  eval: 1  # 8
+  train: 8
+training:
+  precision: 16

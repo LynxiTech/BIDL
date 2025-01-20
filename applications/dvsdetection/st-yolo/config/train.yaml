@@ -1,0 +1,6 @@
+defaults:
+  - general
+  - dataset: gen1
+  # - model: rnndet
+  - model: yolodet
+  - optional model/dataset: ${model}_${dataset}

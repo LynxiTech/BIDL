@@ -1,0 +1,17 @@
+defaults:
+  - dataset: demo
+  - model: yolodet
+  - optional model/dataset: ${model}_${dataset}
+
+path: /model_files/dvsdetection/styolo/st_yolov5s
+chip_id : 0
+use_test_set: True
+hardware:
+  num_workers:
+    eval: 1  # 4
+    train: 6
+batch_size:
+  eval: 1
+  train: 8
+training:
+  precision: 16

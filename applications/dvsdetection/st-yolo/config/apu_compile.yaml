@@ -1,0 +1,26 @@
+name: yolodet
+
+backbone:
+  name: YoloDet
+fpn:
+  name: PAFPN
+  compile:
+    enable: False
+    args:
+      mode: reduce-overhead
+  depth: 0.67 # round(depth * 3) == num bottleneck blocks
+  # stage 1 is the first and len(num_layers) is the last
+  in_stages: [ 0, 1, 2]      # [ 2, 3, 4 ]
+  depthwise: False
+  act: "silu"
+head:
+  name: YoloX
+  compile:
+    enable: False
+    args:
+      mode: reduce-overhead
+  depthwise: False
+  act: "silu"
+postprocess:
+  confidence_threshold: 0.1
+  nms_threshold: 0.45

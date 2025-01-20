@@ -1,0 +1,106 @@
+{
+    "task": "multi_cluster",
+    "version": "0.0.1",
+    "population": [
+        {
+            "neuron_index": [
+                1,
+                2
+            ],
+            "params": {
+                "V_th": 15.0,
+                "V_reset": 0.0,
+                "V_m": 20.0,
+                "decay": 0.8
+            },
+            "neuron_number": 2,
+            "neuron_type": "lif",
+            "ex_inh_type": "excitatory"
+        },
+        {
+            "neuron_index": [
+                3,
+                5
+            ],
+            "params": {
+                "V_th": 15.0,
+                "V_reset": 0.0,
+                "V_m": 20.0,
+                "decay": 0.8
+            },
+            "neuron_number": 3,
+            "neuron_type": "lif",
+            "ex_inh_type": "excitatory"
+        },
+        {
+            "neuron_index": [
+                6,
+                9
+            ],
+            "params": {
+                "V_th": 15.0,
+                "V_reset": 0.0,
+                "V_m": 20.0,
+                "decay": 0.8
+            },
+            "neuron_number": 4,
+            "neuron_type": "lif",
+            "ex_inh_type": "inhibition"
+        }
+    ],
+    "projection": [
+        {
+            "proj": "0_0",
+            "sparse_ratio": 0.6
+        },
+        {
+            "proj": "0_1",
+            "sparse_ratio": 0.6
+        },
+        {
+            "proj": "0_2",
+            "sparse_ratio": 0.6
+        },
+        {
+            "proj": "1_0",
+            "sparse_ratio": 0.6
+        },
+        {
+            "proj": "1_1",
+            "sparse_ratio": 0.6
+        },
+        {
+            "proj": "1_2",
+            "sparse_ratio": 0.6
+        },
+        {
+            "proj": "2_0",
+            "sparse_ratio": 0.6
+        },
+        {
+            "proj": "2_1",
+            "sparse_ratio": 0.6
+        },
+        {
+            "proj": "2_2",
+            "sparse_ratio": 0.6
+        }
+    ],
+        "spike_input": [
+        {
+            "pos_pop": "0",
+            "spike_input": [1,1,0,1],
+            "sparse_ratio": 0.6
+        },
+        {
+            "pos_pop": "1",
+            "spike_input": [1,1,0,1,0,1,1],
+            "sparse_ratio": 0.6
+        },
+        {
+            "pos_pop": "2",
+            "spike_input": [1,1],
+            "sparse_ratio": 0.6
+        }
+    ]
+}
