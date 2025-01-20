@@ -81,7 +81,7 @@ Execute ``./build_run_lif.sh``  in the "lynadapter" path.
 
 ## <div align="left"> Brain-inspired applications</div>
 BIDL includes a rich set of applications, including spatiotemporal classification models, video detection and tracking, robotics, and functional-level brain-inspired applications.
-<div align=center><img src="./imgs/fig4en.jpg" width="650px" height="550px"></div>
+<div align=center><img src="./imgs/fig4en.jpg"></div>
 
 Online learning includes the following brain-inspired On-Chip learning mechanisms:  
 (a) SNN with BP, for transfer learning
