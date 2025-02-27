@@ -6,8 +6,6 @@ import torch.nn as nn
 from torch.nn import Flatten
 import sys
 sys.path.append("../")
-
-
 from layers.lif import Conv2dLif,FcLif
 from layers.temporal_aggregation import Aggregation
 from layers.time_distributed import TimeDistributed
@@ -39,8 +37,7 @@ class VGG7_SNNIt(nn.Module):
         self.flif1 = FcLif(h // 64 * w // 64 * 512, 512, mode=cmode,noise=noise,spike_func=None,use_inner_loop=True)
         self.flif2 = FcLif(512, nclass, mode=cmode, noise=noise,spike_func=None,use_inner_loop=True)
         self.tempAdd = None
-        self.timestep = timestep
-        
+        self.timestep = timestep        
         self.ON_APU = globals.get_value('ON_APU')
         self.FIT = globals.get_value('FIT')
         self.MULTINET = globals.get_value('MULTINET')
@@ -54,8 +51,7 @@ class VGG7_SNNIt(nn.Module):
         if x.is_contiguous():
             x = x.view(s1)
         else:
-            x = x.reshape(s1)
-        
+            x = x.reshape(s1)        
         x1 = self.mp1(self.clif1(x,s0[1]))           
         x2 = self.mp2(self.clif2(x1,s0[1]))
         x3 = self.mp3(self.clif3(x2,s0[1]))

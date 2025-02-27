@@ -6,9 +6,7 @@ from torch.nn import Flatten
 import torch
 import sys
 sys.path.append("../")
-
 from layers.lif import Lif2d
-
 sys.path.append("../../")
 from lynadapter.warp_load_save import load,save,load_kernel,save_kernel
 from utils import globals

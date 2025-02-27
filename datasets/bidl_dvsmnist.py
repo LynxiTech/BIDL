@@ -9,9 +9,7 @@ import os
 from typing import Callable, Dict, Optional, Tuple
 from concurrent.futures import ThreadPoolExecutor,as_completed
 from torchvision.datasets.utils import extract_archive
-import os
 import multiprocessing
-
 from .base_dvsdataset import DvsDatasetFolder,np_savez,max_threads_number_for_datasets_preprocess
 import time
 from .utils import load_events,load_aedat

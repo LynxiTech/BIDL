@@ -35,7 +35,6 @@ class VGG7_SNN(nn.Module):
         self.flat = Flatten(1, -1)
         self.flif1 = FcLif(h // 64 * w // 64 * 512, 512, mode=cmode, soma_params=soma_params,noise=noise,spike_func=None,use_inner_loop=False)
         self.flif2 = FcLif(512, nclass, mode=cmode, soma_params=soma_params,noise=noise,spike_func=None,use_inner_loop=False)
-
         self.tempAdd = None
         self.timestep = timestep
         self.ON_APU = globals.get_value('ON_APU')

@@ -3,13 +3,11 @@
 import os
 import numpy as np
 from scipy.io import loadmat
-import numpy as np
 import pandas
 from scipy.ndimage.interpolation import zoom
 import SimpleITK as sitk
 from scipy.ndimage.morphology import binary_dilation,generate_binary_structure
 from skimage.morphology import convex_hull_image
-import pandas
 from multiprocessing import Pool
 from functools import partial
 from scipy.ndimage import rotate

@@ -4,12 +4,9 @@
 import torch as pt
 import torch.nn as nn
 from torch.nn import Flatten
-
 import sys
 sys.path.append("../")
-
 from layers.lifplus import Conv2dLifPlus, FcLifPlus
-
 sys.path.append("../../")
 from lynadapter.warp_load_save import load,save,load_kernel,save_kernel
 from utils import globals

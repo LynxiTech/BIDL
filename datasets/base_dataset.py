@@ -6,12 +6,9 @@
 
 import copy
 from abc import ABCMeta, abstractmethod
-
-
 import numpy as np
 from torch.utils.data import Dataset
 from collections.abc import Sequence
-
 from losses.accuracy import *
 from .pipelines.bidl_formating import *
 from .pipelines.bidl_loading import *

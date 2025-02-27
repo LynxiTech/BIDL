@@ -3,10 +3,8 @@
 
 import os
 import shutil
-
 import cv2
 import numpy as np
-
 from .base_dataset import BaseDataset
 
 class Jester20bn(BaseDataset):

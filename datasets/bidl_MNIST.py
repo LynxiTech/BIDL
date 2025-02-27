@@ -7,7 +7,6 @@
 import codecs
 import os
 import os.path as osp
-
 import numpy as np
 import torch
 import torch.distributed as dist

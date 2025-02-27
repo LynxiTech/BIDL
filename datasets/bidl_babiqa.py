@@ -11,9 +11,6 @@ import six
 
 from datasets.base_dataset import BaseDataset
 
-
-
-
 class BabiQa(BaseDataset):
     """
     https://research.fb.com/downloads/babi/

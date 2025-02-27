@@ -18,7 +18,6 @@ from datasets.bidl_cifar10dvs import CIFAR10DVS
 from datasets.bidl_dvsmnist import DvsMnist
 from datasets.utils import split_to_train_test_set,TransformedDataset
 from losses.accuracy import *
-from tqdm import tqdm
 import time
 from layers import lif,lifplus
 from utils import globals
@@ -81,23 +80,17 @@ def parse_args():
         action='store_true',
         help='whether to use gpu to collect results')
     parser.add_argument('--tmpdir', help='tmp dir for writing some results')
-    
-
     parser.add_argument(
         '--launcher',
         choices=['none', 'pytorch', 'slurm', 'mpi'],
         default='none',
         help='job launcher')
     parser.add_argument('--local_rank', type=int, default=0)
-
     args = parser.parse_args()
     if 'LOCAL_RANK' not in os.environ:
         os.environ['LOCAL_RANK'] = str(args.local_rank)
-
-
     if args.b > 1 or args.mode==1:
         args.v = 1
-
     return args
 
 def get_data(data_name, data_set, cfg):

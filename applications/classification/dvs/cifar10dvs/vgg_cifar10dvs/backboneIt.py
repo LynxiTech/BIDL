@@ -6,7 +6,6 @@ import torch.nn as nn
 from torch.nn import Flatten
 import sys
 sys.path.append("../")
-
 from layers.lif import Lif2d
 from layers.time_distributed import TimeDistributed
 from layers.attention import TCJA, TemporalWiseAttention

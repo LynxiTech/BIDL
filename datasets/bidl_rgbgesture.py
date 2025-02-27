@@ -2,10 +2,8 @@
 # Copyright (c) China Nanhu Academy of Electronics and Information Technology. All rights reserved.
 import os
 import pickle as pk
-
 import cv2
 import numpy as np
-
 from datasets.base_dataset import BaseDataset
 
 class RgbGesture(BaseDataset):

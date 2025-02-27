@@ -11,7 +11,7 @@ def load(data, flag, is_init=True, shape=(), dtype='float32', offset=0, step=0, 
     Parameter Description:
     1)	data is const and serves as the initial value.
     2)	flag is a string that represents a variable.
-    3)	isini indicates whether const has an initial value.
+    3)	isinit indicates whether const has an initial value.
     4)	shape is used to indicate the current shape when load does not have a const initial value.
     5)	dtype is used to indicate the current data type when load does not have a const initial value.
     6)	offset is used to determine the starting offset of the data.
@@ -64,7 +64,7 @@ def load_kernel(data, flag, is_init=True, shape=(), dtype='float32', offset=0, s
     Parameter Description:
     1)	data is const and serves as the initial value.
     2)	flag is a string that represents a variable.
-    3)	isini indicates whether const has an initial value.
+    3)	isinit indicates whether const has an initial value.
     4)	shape is used to indicate the current shape when load does not have a const initial value.
     5)	dtype is used to indicate the current data type when load does not have a const initial value.
     6)	offset is used to determine the starting offset of the data.

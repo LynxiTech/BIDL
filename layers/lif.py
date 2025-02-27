@@ -2,15 +2,12 @@
 # Copyright (c) China Nanhu Academy of Electronics and Information Technology. All rights reserved.
 
 from uuid import uuid1
-
 import torch as pt
 import torch.nn as nn
 from torch import ops
-
 from .gradient_approx import ThreshActRectangleGrad
 from .stdp import RSTDPLeanrner,Hebbian
 import math
-
 import sys
 sys.path.append("../../")
 from lynadapter.warp_load_save import load,save,load_kernel,save_kernel
@@ -73,7 +70,7 @@ class Lif(nn.Module):
     
     def forward(self, xi: pt.Tensor) -> pt.Tensor:
         if self.use_inner_loop == False:
-            if hasattr(self, 'id'):  # XXX for lyngor apu
+            if hasattr(self, 'id'):  
                 if self.MULTINET:
                     v = load(self.v.clone(), f'v{self.id}', uselookup=True, mode=self.MODE,init_zero_use_data=xi)
                 else:
@@ -93,7 +90,7 @@ class Lif(nn.Module):
             v=self.v
         o2 = v - self.theta
 
-        if hasattr(self, 'id') and self.FIT:  # XXX for lyngor apu
+        if hasattr(self, 'id') and self.FIT:  
             # reset & leakage
             self.v = v          
             if self.mode == "spike":
@@ -326,7 +323,6 @@ class AdaptiveFcLif(nn.Module):
         
     
     def plasticity_rule(self,rule,nu,class_num,neurons_num):
-
         if rule == "stdp":
             self.rule = RSTDPLeanrner(nu=nu,class_num=class_num,neurons_num=neurons_num,ON_APU=self.ON_APU)#,norm=30.0)
         elif rule == "Hebb":
@@ -335,27 +331,17 @@ class AdaptiveFcLif(nn.Module):
 
     def forward(self,xi:pt.Tensor,  gt_label:pt.Tensor,finetune:pt.Tensor) -> pt.Tensor:
         if self.ON_APU:
-            weight = load(self.w.clone(), f'#w')          
-
+            weight = load(self.w.clone(), f'#w')    
         else:
-            weight = self.w.clone()        
-
+            weight = self.w.clone()  
         x1 = pt.mm(xi, weight)  
         x2 = self.lif(x1)
-
-
         delta_w  = self.rule.update(xi,x2,gt_label)
         weight = weight + delta_w*finetune
-
-
         self.w = weight.clone()
-
-        
-        
         if self.ON_APU:
             save(self.w, f'#w')
         return x2
-
 
     def reset(self, xi: pt.Tensor):
         self.lif.v = pt.zeros([xi.size(0), self.p0.out_features], dtype=xi.dtype, device=xi.device,
@@ -431,10 +417,7 @@ class AdaptiveFcLif_Scale(nn.Module):
         delta_w  = self.rule.update_scale(xi,x2,gt_label)
         weight = weight + delta_w*finetune
         weight = pt.clamp(weight, max=65500,min=-65500)
-
-        self.w = weight.clone()
-
-        
+        self.w = weight.clone()    
         
         if self.ON_APU:
             save(self.w, f'#w')

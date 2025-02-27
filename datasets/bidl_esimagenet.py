@@ -2,11 +2,8 @@
 # Copyright (c) China Nanhu Academy of Electronics and Information Technology. All rights reserved.
 
 import numpy as np
-
 from datasets.base_dataset import BaseDataset
-
 import pandas as pd
-
 
 
 class ESImagenet(BaseDataset):    
