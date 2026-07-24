@@ -4,13 +4,15 @@ model = dict(
     type='ImageClassifier',
     backbone=dict(
         type='AttentionVGGNet',
-        timestep=10, input_channels=2, h=128, w=128, nclass=10, cmode='spike', noise=0
+        timestep=10, input_channels=2, h=128, w=128, nclass=10, cmode='analog', amode='mean', noise=0, soma_params='all_share',
+        neuron='lif', 
+        neuron_config=None, 
+        it_batch=32
     ),
     neck=None,
     head=dict(
         type='ClsHead',
-        # loss=dict(type='CrossEntropyLoss', loss_weight=1.0),
-        loss=dict(type='LabelSmoothLoss', label_smooth_val=0.1, loss_weight=1.0),
+        loss=dict(type='LabelSmoothLoss', label_smooth_val=0.4, loss_weight=1.0),
         topk=(1, 5),
         cal_acc=True
     ))
@@ -21,13 +23,13 @@ dataset_type = 'Cifar10Dvs'
 train_pipeline = [
     dict(type='RandomCropVideo', size=128, padding=16),
     dict(type='RandomFlipVideo', flip_prob=0.5, direction='horizontal'),
-    dict(type='ToTensorType', keys=['img'], dtype='float32'),
+    dict(type='ToTensorType', keys=[0], dtype='float32'),
 ]
 test_pipeline = [
-    dict(type='ToTensorType', keys=['img'], dtype='float32'),
+    dict(type='ToTensorType', keys=[0], dtype='float32'),
 ]
 data = dict(
-    samples_per_gpu=64,
+    samples_per_gpu=32,
     workers_per_gpu=2,
     data_root='./data',
     train=dict(
@@ -42,12 +44,12 @@ data = dict(
 
 ###
 
-# optimizer = dict(type='SGD', lr=0.01, momentum=0.9, weight_decay=0.0001, nesterov=True)
-optimizer = dict(type='Adam', lr=0.01, weight_decay=0.0001)
+# optimizer = dict(type='SGD', lr=0.1, momentum=0.9, weight_decay=0.0001)
+optimizer = dict(type='Adam', lr=0.001, weight_decay=0.0001)
 optimizer_config = dict(grad_clip=None)
-lr_config = dict(policy='CosineAnnealingLR',T_max=32, eta_min=0)
+lr_config = dict(policy='MultiStepLR', milestones=[30, 60, 90])
 warmup=dict(warmup_ratio=1e-1, warmup_iters=1000)
-runner = dict(type='EpochBasedRunner', max_epochs=200)
+runner = dict(type='EpochBasedRunner', max_epochs=100)
 
 ###
 
@@ -59,4 +61,4 @@ load_from = None
 resume_from = None
 workflow = [('train', 1)]
 
-fp16 = dict(loss_scale=512.0)  # half-percision
+# fp16 = dict(loss_scale=512.0)  # half-percision

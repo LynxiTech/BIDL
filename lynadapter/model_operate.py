@@ -59,18 +59,18 @@ def run_custom_op_in_model_by_lyn(in_size, model, dict_data, out_path, target="a
     opt_level = 3
     if batch_size==1:
         if post_mode is not None:
-            module_path = lyn_module.build(lyn_model.mod, lyn_model.params, opt_level, out_path=out_path,version=version,post_mode=post_mode,profiler=profiler)
+            module_path = lyn_module.build(lyn_model.mod, lyn_model.params, opt_level, out_path=out_path,version=version,post_mode=post_mode,profiler=profiler,serialize=False)
         else:
             if core_mem_mode is not None:
                 
-                module_path = lyn_module.build(lyn_model.mod, lyn_model.params, opt_level, out_path=out_path,version=version,profiler=profiler,core_mem_mode=core_mem_mode)
+                module_path = lyn_module.build(lyn_model.mod, lyn_model.params, opt_level, out_path=out_path,version=version,profiler=profiler,core_mem_mode=core_mem_mode,serialize=False)
             else:
-                module_path = lyn_module.build(lyn_model.mod, lyn_model.params, opt_level, out_path=out_path,version=version,profiler=profiler)
+                module_path = lyn_module.build(lyn_model.mod, lyn_model.params, opt_level, out_path=out_path,version=version,profiler=profiler,serialize=False)
     else:
         if post_mode is not None:
-            module_path = lyn_module.build(lyn_model.mod, lyn_model.params, opt_level, out_path=out_path,version=1,run_batch=batch_size,post_mode=post_mode,profiler=profiler)
+            module_path = lyn_module.build(lyn_model.mod, lyn_model.params, opt_level, out_path=out_path,version=1,run_batch=batch_size,post_mode=post_mode,profiler=profiler,serialize=False)
         else:
-            module_path = lyn_module.build(lyn_model.mod, lyn_model.params, opt_level, out_path=out_path,version=1,run_batch=batch_size,profiler=profiler)
+            module_path = lyn_module.build(lyn_model.mod, lyn_model.params, opt_level, out_path=out_path,version=1,run_batch=batch_size,profiler=profiler,serialize=False)
 
     # *3.module load
     # module = lyn.loader.load(path=module_path+"/Net_0")

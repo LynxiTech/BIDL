@@ -6,8 +6,9 @@ import torch.nn as nn
 from torch.nn import Flatten
 import sys
 sys.path.append("../")
-from layers.lif import Lif2d
+from layers.lif import Conv2dLif
 from layers.time_distributed import TimeDistributed
+from layers.temporal_aggregation import Aggregation
 from layers.attention import TCJA, TemporalWiseAttention
 from utils import globals
 globals._init()
@@ -39,71 +40,68 @@ class Conv3x3Block(nn.Module):
 class AttentionVGGNet(nn.Module):
     """For CIFAR10-DVS."""
     def __init__(self,
-                 timestep=10, input_channels=2, h=128, w=128, nclass=10, cmode='spike', noise=0):
+                 timestep=10, input_channels=2, h=128, w=128, nclass=10, cmode='spike', amode='mean', soma_params='all_share',
+                 noise=0, neuron='lif', neuron_config=None,it_batch=1):
         super().__init__()       
+        neuron = neuron.lower()
+        assert neuron in ['lif']
+        self.clif1 = Conv2dLif(input_channels, 32, 5, stride=2, padding=2, mode=cmode, noise=noise,spike_func=None,use_inner_loop=True,it_batch=it_batch)
+        self.mp1 = TimeDistributed(nn.MaxPool2d(2, stride=2))
         
-        # self.pool1 = nn.AdaptiveAvgPool2d(48)
-        self.pool1 = nn.AvgPool2d(kernel_size=34, stride=2)
-        self.conv1 = Conv3x3Block(2, 64, timestep, mode=cmode, noise=noise)
-        self.conv2 = Conv3x3Block(64, 128, timestep, mode=cmode, noise=noise)
-
-        self.pool2 = nn.AvgPool2d(2, 2)
-
-        self.conv3 = Conv3x3Block(128, 256, timestep, mode=cmode, noise=noise)
-        self.conv4 = Conv3x3Block(256, 256, timestep, mode=cmode, noise=noise)
-        self.twa1 = TemporalWiseAttention(T=10)
-
-        self.pool3 = nn.AvgPool2d(2, 2)
-
-        self.conv5 = Conv3x3Block(256, 512, timestep, mode=cmode, noise=noise)
-        self.conv6 = Conv3x3Block(512, 512, timestep, mode=cmode, noise=noise)
-        self.pool4 = nn.AvgPool2d(2, 2)
-
-        self.conv7 = Conv3x3Block(512, 512, timestep, mode=cmode, noise=noise)
-        self.conv8 = Conv3x3Block(512, 512, timestep, mode=cmode, noise=noise)
-        self.tcja = TCJA(3, 3, 10, 512)
-        self.twa2 = TemporalWiseAttention(T=10)
-        self.pool5 = nn.AvgPool2d(2, 2)
-
-        self.fc = nn.Sequential(
-            nn.Flatten(1), # nn.Flatten(2),
-            nn.Linear(512 * 3 * 3, 10),
-        )        
+        self.clif2 = Conv2dLif(32, 64, 3, stride=1, padding=1, mode=cmode, noise=noise,spike_func=None,use_inner_loop=True,it_batch=it_batch)
+        self.mp2 = TimeDistributed(nn.MaxPool2d(2, stride=2))
+        
+        self.clif3 = Conv2dLif(64, 128, 3, stride=1, padding=1, mode=cmode, noise=noise,spike_func=None,use_inner_loop=True,it_batch=it_batch)  
+        self.mp3 = TimeDistributed(nn.MaxPool2d(2, stride=2))
+        
+        self.clif4 = Conv2dLif(128, 256, 3, stride=1, padding=1, mode=cmode, noise=noise,spike_func=None,use_inner_loop=True,it_batch=it_batch)
+        self.mp4 = TimeDistributed(nn.MaxPool2d(2, stride=2))
+        
+        self.clif5 = Conv2dLif(256, 512, 3, stride=1, padding=1, mode=cmode, noise=noise,spike_func=None,use_inner_loop=True,it_batch=it_batch)
+        self.mp5 = TimeDistributed(nn.MaxPool2d(2, stride=2))
+        
+        self.tcja = TCJA(3, 3, timestep, 512)
+        
+        amode = 'mean'
+        self.avg = Aggregation(amode,dim=0) 
+        self.flat = Flatten(1, -1)
+        self.head = nn.Sequential(
+            nn.Linear(h // 64 * w // 64 * 512, 512),
+            nn.ReLU(),
+            nn.Linear(512, nclass)
+        )
+        
+        self.timestep = timestep
+        
         self.ON_APU = globals.get_value('ON_APU')
-        
-
-    def forward(self, x):
-        
+        self.FIT = globals.get_value('FIT')
+        self.MULTINET = globals.get_value('MULTINET')
+        self.MODE = globals.get_value('MODE')
+    
+    def forward(self, x: pt.Tensor) -> pt.Tensor:
         if not self.ON_APU:
             x = x.transpose(0,1)
-        T, N, C, H, W = x.size()
+        s0 = x.shape  # t,b,c,h,w
+        assert len(s0) in [3, 5]
+        s1 = s0[0] * s0[1], *s0[2:]
         if x.is_contiguous():
-            x = x.view(N*T, C, H, W)
+            x = x.view(s1)
         else:
-            x = x.reshape(N*T, C, H, W)
-   
-        x = self.pool1(x)
-        x = self.conv1(x)
-        x = self.conv2(x)
-        x = self.pool2(x)
-        x = self.conv3(x)
-        x = self.conv4(x)
-        
-        x = self.twa1(x)  
-        x = self.pool3(x)
-        x = self.conv5(x)
-        x = self.conv6(x)
-        x = self.pool4(x)
-        x = self.conv7(x)
-        x = self.conv8(x)
-        x = self.tcja(x)  
-        x = self.twa2(x)  
-        x = self.pool5(x)
-        x = self.fc(x)
-        
-        x = x.view(T, N, -1)  
-        x = x.mean(dim=0)  
-  
-        return x
+            x = x.reshape(s1)
+
+        x1 = self.mp1(self.clif1(x))           
+        x2 = self.mp2(self.clif2(x1))   
+        x3 = self.mp3(self.clif3(x2))   
+        x4 = self.mp4(self.clif4(x3))   
+        x5 = self.tcja(self.mp5(self.clif5(x4)))   
+
+        if s0[1]!=1:
+            x5 = x5.reshape(s0[0],s0[1],x5.shape[1],x5.shape[2],x5.shape[3])
+            x5 = self.avg(x5)
+        else:
+            x5 = self.avg(x5).unsqueeze(0)   
+        x6 = self.flat(x5)  
+        x7 = self.head(x6)  
+        return x7
     
     

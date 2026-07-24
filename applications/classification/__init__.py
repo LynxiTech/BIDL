@@ -12,6 +12,7 @@ from .three_D.luna16cls.backbone import SeqClif3Fc3LcItout,SeqClifplus3Fc3LcItou
 from .text.imdb.backbone import FastTextItout,FastTextlifplusItout
 from .videodiff.rgbgesture.backbone import SeqClif3Flif2DgItout,SeqClifplus3Flifplus2DgItout
 from .video.jester.resnetlif18_t8.backbone import ResNetLifItout
+from .dvs.cifar10dvs.vgg_cifar10dvs.backboneIt import AttentionVGGNet
 from .video.jester.resnetlif18_lite_t16.backbone import ResNetLifReluItout
 from .video.jester.resnetlif18_t16.backbone import ResNetLifItout
 
@@ -22,5 +23,5 @@ __all__ = [
     'SeqClif5Fc2CdIt','SeqClif3Fc3DmIt','SeqClif7Fc1DgIt','SeqClif5Fc2DmIt',
     'SeqClif3Fc3DmItout', 'SeqClif3Fc3LcItout', 'SeqClif3Flif2DgItout', 'SeqClif5Fc2CdItout', 'FastTextItout',
     'SeqClifplus3Fc3DmItout', 'SeqClifplus3Fc3LcItout', 'SeqClifplus3Flifplus2DgItout', 
-    'SeqClifplus5Fc2CdItout', 'FastTextlifplusItout','SeqClif7Fc1DgItout',
+    'SeqClifplus5Fc2CdItout', 'FastTextlifplusItout','SeqClif7Fc1DgItout','AttentionVGGNet',
 ]
