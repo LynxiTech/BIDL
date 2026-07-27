@@ -3,7 +3,7 @@ model = dict(
     type='ImageClassifier',
     backbone=dict(
         type='SeqClif3Fc3DmItout',
-        timestep=20, input_channels=2, h=40, w=40, nclass=10, cmode='analog', amode='mean', noise=0, soma_params='all_share',
+        timestep=8, input_channels=2, h=40, w=40, nclass=10, cmode='analog', amode='mean', noise=0, soma_params='all_share',
         neuron='lif', # neuron mode: 'lif' or 'lifplus'
         neuron_config=None # neron configs: 1.'lif': neuron_config=None; 2.'lifplus': neuron_config=[input_accum, rev_volt, fire_refrac, spike_init, trig_current, memb_decay], eg.[1,False,0,0,0,0]
     ),
