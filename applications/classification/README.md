@@ -62,6 +62,7 @@ python3 test.py --config resnetlif50-it-b16x1-cifar10dvs --checkpoint best.pth -
 python3 test.py --config clif7fc1cd_it-b64x1-cifar10dvs --checkpoint best_clif7.pth --use_lyngor 1 --use_legacy 0
 python3 test.py --config clif7fc1dg_it-b16x1-dvsgesture --checkpoint best_clif7.pth --use_lyngor 1 --use_legacy 0
 python3 test.py --config clif5fc2dm_it-b16x1-dvsmnist --checkpoint best_clif5.pth --use_lyngor 1 --use_legacy 0
+python3 test.py --config attentionVGG-it-b64x1-cifar10dvs --checkpoint best.pth --use_lyngor 1 --use_legacy 0
 ```
   
 ### 2. Compilation without APU Inference.If you only want to compile without performing APU inference, add --c 1 to the command. Example:
@@ -103,7 +104,13 @@ Note: --v indicates compiling the version, such as v1 or v0, --b represents the 
   python3 lynxi_inference.py --batch_size 1 --model metaspikformer_8_512  --time_steps 4 --device apu:0
   ```
 
-### 7. Train
+### 7. Running Multiple Networks Simultaneously
+#### Execute the following command in the tools/ directory to compile and alternate between the two networks in time steps:
+  ```Python
+  python3 two_nets_onedevice.py  --use_lyngor 1 --use_legacy 0 --multinet 1
+  ```
+
+### 8. Train
 #### Execute the following commands in the tools/ directory to  train the models:
   ```Python
   python3 train.py --config clif3fc3dm_itout-b16x1-dvsmnist

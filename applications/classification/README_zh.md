@@ -64,6 +64,7 @@ python3 test.py --config clif5fc2cd_it-b64x1-cifar10dvs --checkpoint best_clif5.
 python3 test.py --config clif7fc1cd_it-b64x1-cifar10dvs --checkpoint best_clif7.pth --use_lyngor 1 --use_legacy 0
 python3 test.py --config clif7fc1dg_it-b16x1-dvsgesture --checkpoint best_clif7.pth --use_lyngor 1 --use_legacy 0
 python3 test.py --config clif5fc2dm_it-b16x1-dvsmnist --checkpoint best_clif5.pth --use_lyngor 1 --use_legacy 0
+python3 test.py --config attentionVGG-it-b64x1-cifar10dvs --checkpoint best.pth --use_lyngor 1 --use_legacy 0
 ```
   
 ### 2. 如果只编译，不进行apu推理，需要加上--c 1，示例如下
@@ -104,7 +105,13 @@ Note: --v 表示编译version，v1或者v0，--b 表示batchsize大小， --c表
   python3 lynxi_inference.py --batch_size 1 --model metaspikformer_8_512  --time_steps 4 --device apu:0
   ```
 
-### 7. 训练
+### 7. 多网络同时运行
+#### 在``tools/``目录下执行如下命令，进行两个网络编辑以及逐时间拍的交替运行
+  ```Python
+  python3 two_nets_onedevice.py  --use_lyngor 1 --use_legacy 0 --multinet 1
+  ```
+
+### 8. 训练
 #### 在``tools/``目录下执行如下命令，进行模型的训练
   ```Python
   python3 train.py --config clif3fc3dm_itout-b16x1-dvsmnist
