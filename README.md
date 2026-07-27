@@ -119,6 +119,23 @@ The brain-inspired neuronal simulation toolkit in the special applications has t
 - [frameworkfree-runtime English README](./deploy/README.md)
   [Chinese README](./deploy/README_zh.md)
 
+## Running Four Jupyter Notebook Examples
+### Installing and Configuring Jupyter
+pip install jupyter notebook
+Generate the configuration file: jupyter notebook --generate-config
+Set a password: jupyter notebook password
+Modify the configuration file
+vim ~/.jupyter/jupyter_notebook_config.py
+c.NotebookApp.ip = '0.0.0.0' # Allow access from all IPs
+c.NotebookApp.port = 8888 # Specify the port (can be changed)
+c.NotebookApp.open_browser = False # Do not open the browser automatically
+c.NotebookApp.allow_remote_access = True # Allow remote access
+
+### Starting Jupyter
+Activate the virtual environment and start it from the root directory of the bidl code
+jupyter notebook --no-browser --port=8888
+After that, enter http://localhost:8888/tree in your browser.
+
 ## <div align="left">References</div>
 Related paper - BIDL: a brain-inspired deep learning framework for spatiotemporal processing (https://www.frontiersin.org/journals/neuroscience/articles/10.3389/fnins.2023.1213720/full)
 

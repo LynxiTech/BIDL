@@ -111,6 +111,23 @@ BIDL包括了较为丰富的应用集合，包括空时分类模型、视频检�
 - [frameworkfree-runtime 英文说明](./deploy/README.md) [中文说明](./deploy/README_zh.md)
 
 
+## 四个jupyter案例的运行
+### 安装和配置jupyter
+pip install jupyter notebook
+生成配置文件jupyter notebook --generate-config
+设置密码 jupyter notebook password
+修改配置文件
+vim ~/.jupyter/jupyter_notebook_config.py
+c.NotebookApp.ip = '0.0.0.0'  # 允许所有IP访问
+c.NotebookApp.port = 8888      # 指定端口（可改）
+c.NotebookApp.open_browser = False  # 不自动打开浏览器
+c.NotebookApp.allow_remote_access = True  # 允许远程访问
+### 启动
+进入虚拟环境，在bidl代码根目录下启动
+jupyter notebook --no-browser --port=8888
+之后在网页输入http://localhost:8888/tree即可
+
+
 ## <div align="left">参考文献</div>
 相关论文 BIDL: a brain-inspired deep learning framework for spatiotemporal processing (https://www.frontiersin.org/journals/neuroscience/articles/10.3389/fnins.2023.1213720/full)
 

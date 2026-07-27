@@ -18,3 +18,8 @@ python3 test.py --neuron multicluster --use_lyngor 1 --use_legacy 0 --use_gpu 1 
   ```Python
 python3 test_stdp.py --use_lyngor 1  --use_legacy 0 --use_gpu 1 --plot 1 --device 0
   ```
+
+### Running 10 Million Neurons
+  ```Python
+python3 test_1000w.py --use_lyngor 1 --use_legacy 0 --use_gpu 1  --device 0
+  ``` 
